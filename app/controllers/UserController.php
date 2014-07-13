@@ -54,14 +54,11 @@ class UserController extends BaseController
 				->with('message', 'This email is already taken.');
 		}
 
-		$user = Input::all();
-		$user = array_merge($user, [
-			'password' => Hash::make(Input::get('password')),
-			'blocked'  => Input::get('blocked') ? true : false,
-			'email'    => strtolower(Input::get('email'))
-		]);
-
-		$user = User::create($user);
+		$user             = Input::all();
+		$user['password'] = Hash::make(Input::get('password'));
+		$user['blocked']  = Input::get('blocked') ? true : false;
+		$user['email']    = strtolower(Input::get('email'));
+		$user             = User::create($user);
 
 		return Redirect::route('users.show', $user->id);
 	}
@@ -135,7 +132,7 @@ class UserController extends BaseController
 		 * Check if stupid user blocks the whole application
 		 */
 		if (Input::get('blocked')) {
-			if (!count(User::where('blocked', 0)->get())
+			if (!count(User::where('blocked', false)->where('id', '!=', $id)->get())
 			) {
 				return Redirect::route('users.edit', $id)
 					->withInput()
@@ -174,13 +171,11 @@ class UserController extends BaseController
 		/**
 		 * Check if stupid user blocks the whole application
 		 */
-		if (!$user->blocked) {
-			if (count(User::where('blocked', 0)->get()) == 1
-			) {
-				return Redirect::route('users.edit', $id)
-					->withInput()
-					->with('message', 'There must be at least one active user!');
-			}
+		if (!count(User::where('blocked', false)->where('id', '!=', $id)->get())
+		) {
+			return Redirect::route('users.edit', $id)
+				->withInput()
+				->with('message', 'There must be at least one active user!');
 		}
 
 		DB::table('users')->where('id', $id)->delete();

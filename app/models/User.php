@@ -33,8 +33,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
 	protected $guarded = ['id'];
 
-	protected $fillable = ['name', 'email', 'password'];
-
 	public function getRememberToken()
 	{
 		return $this->remember_token;

@@ -11,6 +11,12 @@
 </head>
 <body>
 
+@if (Auth::check())
+<small>
+	Authenticated as {{ Auth::user()->email }}
+</small><br><br>
+@endif
+
 <div class="header">
 	<a href="{{ URL::route('users.index') }}">users</a>
 	<a href="{{ URL::route('departments.index') }}">departments</a>

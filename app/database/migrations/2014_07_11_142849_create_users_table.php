@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
 			$table->string('email', '100');
 			$table->string('password', '100');
 			$table->string('name', '60')->nullable();
-			$table->string('remember_token', '100')->nullable();
+			$table->rememberToken();
 			$table->boolean('blocked')->default(0);
 			$table->timestamps();
 		});
