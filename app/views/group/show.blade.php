@@ -6,8 +6,13 @@
 
 	<p>Просмотр группы работников</p>
 
-	<?php
-		var_dump($group);
-	?>
+	<span>ID {{ $group->id }}</span>
+	<span>Name {{ $group->name }}</span>
+	<span>Created {{ $group->created_at }}</span>
+	<span>Updated {{ $group->updated_at }}</span>
+	<span>Employees {{ $group->employees->count() }}</span>
+
+	<p><a href="{{ URL::route('groups.edit', $group->id) }}">edit</a></p>
+
 
 @stop

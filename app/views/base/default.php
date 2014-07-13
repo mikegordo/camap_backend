@@ -52,6 +52,8 @@
 		?>
 		</p>
 
+		<p><a href="/admin">Admin</a></p>
+
 	</div>
 </body>
 </html>

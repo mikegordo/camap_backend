@@ -163,11 +163,7 @@ class EmployeeController extends BaseController
 		if (!$employee)
 			return Response::json(['error' => "Запись id {$id} не найдена"], 400);
 
-		$employee->active        = false;
-		$employee->department_id = null;
-		$employee->specialty_id  = null;
-		$employee->group_id      = null;
-		$employee->save();
+		DB::table('employee')->where('id', $id)->delete();
 
 		return Response::json(null, 200);
 	}

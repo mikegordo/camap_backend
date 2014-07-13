@@ -1,0 +1,46 @@
+
+body {
+    font-family: 'Ubuntu Mono';
+    padding:20px;
+}
+
+span {
+    display: block;
+}
+
+div.item span {
+    display: inline-block;
+    min-width: 100px;
+}
+
+.menu,
+.header {
+    margin-bottom: 50px;
+}
+
+.header + .menu{
+    margin-top: -30px;
+}
+
+.menu a,
+.header a {
+    background-color: #666;
+    color: #ccc;
+    padding:3px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.menu a:hover,
+.header a:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.error {
+    color:red;
+}
+
+div.item span.long {
+    min-width: 300px;
+}

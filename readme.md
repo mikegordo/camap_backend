@@ -110,7 +110,7 @@ admin/employees | employees.index | get | Вывести список сотру
 admin/employees | employees.store | post | Сохранение нового сотрудника
 admin/employees/{id} | employees.show | get | Вывод одного сотрудника
 admin/employees/{id} | employees.update | put | Сохранение изменений
-admin/employees/{id} | employees.destroy | delete | Удаление сотрудника (деактивация)
+admin/employees/{id} | employees.destroy | delete | Удаление сотрудника
 
 За администрирование сотрудников отвечает EmployeeController
 

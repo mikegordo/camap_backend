@@ -6,8 +6,13 @@
 
 	<p>Просмотр пользователя</p>
 
-	<?php
-		var_dump($user);
-	?>
+	<span>ID {{ $user->id }}</span>
+	<span>Name {{ $user->name }}</span>
+	<span>E-mail {{ $user->email }}</span>
+	<span>Blocked {{ $user->blocked }}</span>
+	<span>Created {{ $user->created_at }}</span>
+	<span>Updated {{ $user->updated_at }}</span>
+
+	<p><a href="{{ URL::route('users.edit', $user->id) }}">edit</a></p>
 
 @stop

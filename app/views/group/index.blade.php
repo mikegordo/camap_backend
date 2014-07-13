@@ -14,8 +14,14 @@
 		Здесь у нас список всех групп работников
 	</p>
 
-	<?php
-	var_dump($groups);
-	?>
+	@foreach ($groups as $item)
+	<div class="item">
+
+		<span><a href="{{ URL::route('groups.show', $item->id) }}">{{ $item->id }}</a></span>
+		<span class="long"><a href="{{ URL::route('groups.show', $item->id) }}">{{ $item->name }}</a></span>
+		<span>@if ($item->created_at->format('U') > 0) {{ $item->created_at->format('Y-m-d H:i:s') }} @endif</span>
+
+	</div>
+	@endforeach
 
 @stop
