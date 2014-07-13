@@ -52,4 +52,9 @@ class Employee extends Eloquent
 		return $this->belongsTo('Specialty');
 	}
 
+	public function fullName()
+	{
+		return "{$this->firstName} {$this->lastName}";
+	}
+
 }
